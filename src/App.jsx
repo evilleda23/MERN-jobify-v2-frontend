@@ -4,6 +4,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-bootstrap';
+
 import './index.css';
 
 import {
@@ -40,15 +42,16 @@ const router = createBrowserRouter(
         path='dashboard'
         element={<DashboardLayout />}
       />
-      <Route
-        path='*'
-        element={<Error />}
-      />
     </Route>
   )
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </>
+  );
 };
 export default App;
