@@ -1,12 +1,10 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
-import { Button, Card, Col, Form, Row } from 'react-bootstrap';
-import { FormContainer, Logo } from '../components';
+import { FormContainer, FormRow, Logo } from '../components';
 
 const Register = () => {
-  const [name, setName] = useState('');
   return (
     <Wrapper>
       <Card className='py-5 '>
@@ -14,19 +12,41 @@ const Register = () => {
           <Form className='form'>
             <Logo />
             <h4>Register</h4>
-            <Form.Group
-              controlId='name'
-              className='my-3'
-            >
-              <Form.Label className='form-label'>Name</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter Name'
-                className='form-input'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <FormRow
+              defaultValue=''
+              text='Name'
+              type='text'
+              name='name'
+              isRequired={true}
+            />
+            <FormRow
+              defaultValue=''
+              text='Last Name'
+              type='text'
+              name='lastname'
+              isRequired={true}
+            />
+            <FormRow
+              defaultValue=''
+              text='Location'
+              type='text'
+              name='location'
+              isRequired={true}
+            />
+            <FormRow
+              defaultValue=''
+              text='Email'
+              type='email'
+              name='email'
+              isRequired={true}
+            />
+            <FormRow
+              defaultValue=''
+              text='Password'
+              type='password'
+              name='password'
+              isRequired={true}
+            />
             <Button
               type='submit'
               variant='primary'
@@ -36,7 +56,7 @@ const Register = () => {
             >
               Register
             </Button>
-            <Row className='py-3'>
+            <Row className='py-3 text-center'>
               <Col>
                 Already have an account? <Link to={`/login`}>Login here!</Link>
               </Col>
