@@ -8,16 +8,17 @@ import { useDashboardContext } from '../pages/DashboardLayout';
 import links from '../utils/links';
 import NavLink from './NavLink';
 import LogoutContainer from './LogoutContainer';
+
 const Header = () => {
-  const { logoutUser, user } = useDashboardContext();
+  const { logoutUser, userInfo } = useDashboardContext();
 
   return (
     <header>
-      <Container>
-        <Navbar
-          expand='md'
-          collapseOnSelect
-        >
+      <Navbar
+        expand='md'
+        collapseOnSelect
+      >
+        <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
               <Logo />
@@ -32,7 +33,7 @@ const Header = () => {
             <Nav className='ml-auto nav-links'>
               {links.map((link, index) => {
                 const { text, path, icon } = link;
-                console.log(path, text);
+
                 return (
                   <NavLink
                     icon={icon}
@@ -42,11 +43,11 @@ const Header = () => {
                   />
                 );
               })}
+              <LogoutContainer />
             </Nav>
           </Navbar.Collapse>
-          <LogoutContainer className='mx-auto' />
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
     </header>
   );
 };

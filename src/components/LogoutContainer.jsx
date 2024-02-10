@@ -1,40 +1,35 @@
-import { FaUserCircle, FaCaretDown } from 'react-icons/fa';
-import Wrapper from '../assets/wrappers/LogoutContainer';
-import { useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 import { useDashboardContext } from '../pages/DashboardLayout';
-import { Button, Image } from 'react-bootstrap';
+import { Image, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 const LogoutContainer = () => {
-  const [showLogout, setShowLogout] = useState(false);
-  const { user, logoutUser } = useDashboardContext();
-  return (
-    <Wrapper>
-      <Button
-        type='button '
-        onClick={() => setShowLogout(!showLogout)}
-      >
-        {user.avatar ? (
-          <Image
-            src={user.avatar}
-            alt='avatar'
-            className='img'
-          />
-        ) : (
-          <FaUserCircle className='mr-2 align-self-center' />
-        )}
+  const { userInfo, logoutUser } = useDashboardContext();
 
-        {user?.name}
-        <FaCaretDown className='ml-1' />
-      </Button>
-      <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
-        <Button
-          type='button'
-          className='dropdown-btn'
-          onClick={logoutUser}
-        >
-          logout
-        </Button>
-      </div>
-    </Wrapper>
+  return (
+    <>
+      <NavDropdown
+        title={
+          <>
+            {userInfo.avatar ? (
+              <Image
+                src={userInfo.avatar}
+                alt='avatar'
+                className='img'
+              />
+            ) : (
+              <FaUserCircle className='mr-2 align-self-center' />
+            )}
+            {userInfo.name}
+          </>
+        }
+        id='username'
+      >
+        <LinkContainer to='/profile'>
+          <NavDropdown.Item>Profile</NavDropdown.Item>
+        </LinkContainer>
+        <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
+      </NavDropdown>
+    </>
   );
 };
 export default LogoutContainer;

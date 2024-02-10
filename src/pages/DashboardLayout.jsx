@@ -7,9 +7,10 @@ import { createContext, useContext, useState } from 'react';
 const DashboardContex = createContext();
 const DashboardLayout = () => {
   //temp
-  const user = {
+  const userInfo = {
     name: 'John Doe',
     email: '',
+    isAdmin: false,
   };
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -25,7 +26,7 @@ const DashboardLayout = () => {
   return (
     <DashboardContex.Provider
       value={{
-        user,
+        userInfo,
         isDarkTheme,
         toggleDarkTheme,
         logoutUser,
