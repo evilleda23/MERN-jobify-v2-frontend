@@ -32,13 +32,13 @@ const Landing = () => {
           </p>
           <Link
             to={'/register'}
-            className='btn register-link'
+            className='btn btn-primary mr-2'
           >
             Register
           </Link>
           <Link
             to={'/login'}
-            className='btn '
+            className='btn btn-primary mr-2'
           >
             Login / Demo User
           </Link>
